@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    CardView find_btn;
+    CardView find_btn,partners_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +20,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         actionBar.hide();
 
         find_btn = (CardView)findViewById(R.id.find_btn);
+        partners_btn = (CardView)findViewById(R.id.partners_btn);
         find_btn.setOnClickListener(this);
+        partners_btn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, MapFinder.class);
-        startActivity(intent);
+
+        switch (view.getId()){
+
+            case R.id.find_btn:
+                Intent intent = new Intent(MainActivity.this, MapFinder.class);
+                startActivity(intent);
+                break;
+
+            case R.id.partners_btn:
+                Intent intent2 = new Intent(MainActivity.this, OurPartners.class);
+                startActivity(intent2);
+                break;
+        }
+
     }
 }
